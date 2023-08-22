@@ -9,7 +9,7 @@
 - Docker image: mysql:8.0.33 ( this is automatically downloaded on building module)
 
 ## Project modules.
-* [Bahay/login-services](Bahay-login-services/README.md)<br>
+* [Bahay-LoginServices](Bahay-LoginServices/README.md)<br>
 
 
 ## Contact info:
