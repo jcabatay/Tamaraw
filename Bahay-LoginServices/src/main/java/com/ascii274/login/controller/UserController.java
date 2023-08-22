@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping(value = "/v1")
 public class UserController {
@@ -21,8 +24,23 @@ public class UserController {
     public ResponseEntity<User> addUser(@RequestBody User newUser){
         userServiceImp.save(newUser);
         return ResponseEntity.status(200).body(newUser);
+    }
+
+    @GetMapping(value = "/getall")
+    public ResponseEntity<?> getAllUsers(){
+        List<User> users = userServiceImp.getAllUsers();
+        return ResponseEntity.status(200).body(users);
 
     }
+
+    @GetMapping(path = "/search/user/{id}")
+    public @ResponseBody ResponseEntity<Optional<User>> search(@PathVariable("id") Long userId){
+        Optional<User> userFound = Optional.of(new User());
+        userFound = userServiceImp.getUserById(userId);
+        return ResponseEntity.status(200).body(userFound);
+    }
+
+
 
     @GetMapping( value = "/test" )
     public String test(){
