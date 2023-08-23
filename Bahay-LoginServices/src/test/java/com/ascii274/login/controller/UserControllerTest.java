@@ -1,4 +1,4 @@
-package com.ascii274.controller;
+package com.ascii274.login.controller;
 
 import com.ascii274.BahayLoginServicesApp;
 import com.ascii274.login.controller.UserController;
@@ -68,7 +68,6 @@ public class UserControllerTest {
     // Functional
     @Test
     public void contextLoads() throws Exception{
-
 
     }
 }
