@@ -27,6 +27,9 @@
 * [Bahay/login-services](Bahay-login-services/README.md)<br>
 
 
+## Running Test
+- UserControllerTest: should running docker-compose
+
 ## Contact info:
 
 > ascii274@gmail.com || Joel Cabatay
