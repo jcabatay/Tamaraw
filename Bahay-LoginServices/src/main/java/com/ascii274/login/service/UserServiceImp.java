@@ -27,8 +27,6 @@ public class UserServiceImp implements UserService{
         return userRepository.findAll();
     }
 
-
-
     @Override
     public Optional<User> save(User user) {
         return Optional.of(userRepository.save(user));

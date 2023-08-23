@@ -14,12 +14,12 @@
 	<packaging>pom</packaging>
 	<name>Bahay</name>
 	<description>Home Services</description>
-	<modules>
-		<module>Bahay-LoginServices</module>
-	</modules>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+	<modules>
+		<module>Bahay-LoginServices</module>
+	</modules>
 
 <!--	<build>-->
 <!--		<plugins>-->

@@ -4,7 +4,6 @@ import com.ascii274.login.entity.User;
 import com.ascii274.login.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,12 @@ public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger((UserController.class));
 
-    @Autowired
-    UserServiceImp userServiceImp;
+//    @Autowired
+    private final UserServiceImp userServiceImp;
+
+    public UserController(UserServiceImp userServiceImp) {
+        this.userServiceImp = userServiceImp;
+    }
 
     @PostMapping(value="/add")
     public ResponseEntity<User> addUser(@RequestBody User newUser){
@@ -42,9 +45,9 @@ public class UserController {
 
 
 
-    @GetMapping( value = "/test" )
-    public String test(){
-        return "Hello Bahay-LoginServices";
+    @GetMapping( value = "/test-message" )
+    public String hello(){
+        return "Hello, Bahay Login Services";
     }
 
 }
