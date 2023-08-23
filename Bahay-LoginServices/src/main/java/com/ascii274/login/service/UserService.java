@@ -9,6 +9,8 @@ public interface UserService {
 
     public Optional<User> getUserById(Long userId);
 
+    public Optional<User> getUserByUserId(String userId);
+
     public List<User> getAllUsers();
 
     public Optional<User> save(User user);

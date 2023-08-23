@@ -36,13 +36,19 @@ public class UserController {
 
     }
 
-    @GetMapping(path = "/search/user/{id}")
+    @GetMapping(path = "/search/id/{id}")
     public @ResponseBody ResponseEntity<Optional<User>> search(@PathVariable("id") Long userId){
         Optional<User> userFound = Optional.of(new User());
         userFound = userServiceImp.getUserById(userId);
         return ResponseEntity.status(200).body(userFound);
     }
 
+    @GetMapping(path = "/search/userid/{userId}")
+    public @ResponseBody ResponseEntity<Optional<User>> searchUserId(@PathVariable("userId") String userId){
+        Optional<User> userIdFound = Optional.of(new User());
+        userIdFound = userServiceImp.getUserByUserId(userId);
+        return ResponseEntity.status(200).body(userIdFound);
+    }
 
 
     @GetMapping( value = "/test-message" )

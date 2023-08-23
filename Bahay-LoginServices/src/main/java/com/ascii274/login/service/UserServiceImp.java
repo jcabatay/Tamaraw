@@ -23,6 +23,12 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
+    public Optional<User> getUserByUserId(String userId) {
+//        return Optional.empty();
+        return userRepository.findByUserId(userId);
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
