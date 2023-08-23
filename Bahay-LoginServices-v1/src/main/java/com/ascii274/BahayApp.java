@@ -1,4 +1,4 @@
-package com.ascii274;
+package com.ascii274.login;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,10 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"com.ascii274.login","com.ascii274.login.repository"})
 @EntityScan("com.ascii274.login.entity")
 @EnableJpaRepositories("com.ascii274.login.repository")
-public class BahayLoginServicesApp {
-
-	public static void main(String[] args) {
-		SpringApplication.run(BahayLoginServicesApp.class, args);
-	}
-
+public class BahayApp {
+    public static void main(String[] args) {
+        SpringApplication.run(BahayApp.class, args);
+    }
 }

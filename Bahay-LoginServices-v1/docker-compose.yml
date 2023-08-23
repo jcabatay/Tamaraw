@@ -1,0 +1,40 @@
+# cat docker-compose.yml
+version: '3.3'
+services:
+  ### MySQL Container
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql-login-container
+    restart: always
+    env_file: .env
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - .:/docker-entrypoint-initdb.d #execute data.sql
+
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    container_name: phpmyadmin-login-container
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    #    build:
+    #      context: .
+    ports:
+      - "8090:80"
+      #      -mysql
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      #      MYSQL_ROOT_PASSWORD: rootmysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      PMA_HOST: mysql
+      PMA_PORT: 3306

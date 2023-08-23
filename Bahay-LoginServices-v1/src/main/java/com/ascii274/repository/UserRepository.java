@@ -1,6 +1,5 @@
 package com.ascii274.login.repository;
 
-
 import com.ascii274.login.entity.User;
 import io.micrometer.common.lang.NonNullApi;
 import jakarta.transaction.Transactional;
