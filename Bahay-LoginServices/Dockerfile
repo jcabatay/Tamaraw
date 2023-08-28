@@ -18,9 +18,10 @@ ENV MYSQL_USER = $MYSQL_USER
 ENV MYSQL_PASSWORD = $MYSQL_PASSWORD
 ENV MYSQL_ROOT_PASSWORD = $MYSQL_ROOT_PASSWORD
 
-#Cat [Inserting user_data.sql]
-ADD user_data.sql /etc/mysql/user_data.sql
+#Cat [Inserting user_data2.sql]
+#ADD user_data2.sql /etc/mysql/user_data.sql
+ADD src/main/resources/user_data2.sql /etc/mysql/user_data.sql
 
-RUN sed -i 's/MYSQL_DATABASE/'$MYSQL_DATABASE'/g' /etc/mysql/user_data.sql
-RUN cp /etc/mysql/user_data.sql /docker-entrypoint-initdb.d
+RUN sed -i 's/MYSQL_DATABASE/'$MYSQL_DATABASE'/g' /etc/mysql/user_data2.sql
+RUN cp /etc/mysql/user_data2.sql /docker-entrypoint-initdb.d
 EXPOSE 3306
