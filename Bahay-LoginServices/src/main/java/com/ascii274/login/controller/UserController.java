@@ -4,13 +4,16 @@ import com.ascii274.login.entity.User;
 import com.ascii274.login.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping(value = "/v1")
 public class UserController {
 
@@ -26,14 +29,14 @@ public class UserController {
     @PostMapping(value="/add")
     public ResponseEntity<User> addUser(@RequestBody User newUser){
         userServiceImp.save(newUser);
-        return ResponseEntity.status(200).body(newUser);
+//        return ResponseEntity.status(200).body(newUser); //
+        return new ResponseEntity<>(newUser,null, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/getall")
     public ResponseEntity<?> getAllUsers(){
         List<User> users = userServiceImp.getAllUsers();
         return ResponseEntity.status(200).body(users);
-
     }
 
     @GetMapping(path = "/search/id/{id}")
@@ -50,6 +53,11 @@ public class UserController {
         return ResponseEntity.status(200).body(userIdFound);
     }
 
+    @GetMapping(value = "/test-view")
+    public String greeting(@RequestParam(name="helloView", required=false, defaultValue="Hello") String name, Model model) {
+        model.addAttribute("helloView","Hello view with thymeleaf");
+        return "hello-view";
+    }
 
     @GetMapping( value = "/test-message" )
     public String hello(){

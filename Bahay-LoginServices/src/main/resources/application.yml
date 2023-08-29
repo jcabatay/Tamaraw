@@ -13,8 +13,14 @@ environments:
       ENTITY_TO_SCAN: com.ascii274.login.entity
       URL: jdbc:mysql://localhost
 
+# Configuration webapp directory
+spring:
+  thymeleaf:
+    template-resolver-order: 0
+    prefix: classpath:./webapp/WEB-INF/view/
 
 
+#spring.thymeleaf.prefix=classpath:./webapp/WEB-INF/templates/
 #
 #spring:
 #  datasource:

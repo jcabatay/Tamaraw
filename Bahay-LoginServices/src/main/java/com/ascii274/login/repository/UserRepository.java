@@ -7,7 +7,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,11 +14,6 @@ import java.util.Optional;
 @NonNullApi
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    public Optional<User> findById (Long id);
-
     public Optional<User> findByUserId(String userId);
-
-    public List<User> findAll();
-
 
 }
