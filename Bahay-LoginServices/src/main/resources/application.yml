@@ -18,27 +18,28 @@ spring:
   thymeleaf:
     template-resolver-order: 0
     prefix: classpath:./webapp/WEB-INF/view/
-
-
-#spring.thymeleaf.prefix=classpath:./webapp/WEB-INF/templates/
+#  web:
+#    resources:
+#      static-locations: classpath:./static/
+#      static-locations: classpath./webapp/WEB-INF/view/
 #
-#spring:
-#  datasource:
-##    driver-class-name: com.mysql.jdbc.Driver #original deprecated
-#    driver-class-name: com.mysql.cj.jdbc.Driver #baeldung
-#    url: jdbc:mysql://${MYSQL_HOST:localhost}:8081/login
-#    username: root
-#    password: bahay1234
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-#
-#
-#
-#    properties:
-#      hibernate:
-#        dialect=org.hibernate.dialect.MySQL5Dialect
 
+#      chain:
+#        strategy:
+#          content:
+#            enabled: true
+#            paths: "/**"
 
+#custom directories
+
+#  web:
+#    resources:
+#      static-locations: classpath:./resources/**
+#  mvc:
+#    static-path-pattern: "/resources/**"
+#  web:
+#    resources:
+#      static-location: classpath:./webapp/
+#  resources:
+#    add-mapping: true
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1">
+    <title>Bahay Index</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div class="divHeader">
+      <table class="tableHeader">
+        <tr>
+          <td>
+            <p>Index</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+     <br>
+    <div>
+      <table>
+        <tr>
+          <td><a th:href="@{/v1/test-view}">[Ir a test view]</a></td>
+          <td><a th:href="@{/v1/getall}">[ Get All Users ]</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

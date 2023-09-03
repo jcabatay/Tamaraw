@@ -6,7 +6,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -15,13 +14,14 @@ import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
-@ComponentScan("com.ascii274.login")
-public class CustomConfig implements WebMvcConfigurer, ApplicationContextAware {
+@EnableWebMvc
+//@ComponentScan("com.ascii274.login")
+public class WebCustomConfig implements WebMvcConfigurer, ApplicationContextAware {
 
-    private static final Logger log = LoggerFactory.getLogger((CustomConfig.class));
+    private static final Logger log = LoggerFactory.getLogger((WebCustomConfig.class));
     private ApplicationContext applicationContext;
 
-    public CustomConfig(){
+    public WebCustomConfig(){
         super();
     }
 
@@ -53,23 +53,10 @@ public class CustomConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
-        registry.addResourceHandler("/images/**").addResourceLocations("webapp/images/");
-        registry.addResourceHandler("/webapp/css/**").addResourceLocations("/webapp/css/");
-        registry.addResourceHandler("/view/**").addResourceLocations("webapp/js/");
+//        registry.addResourceHandler("/images/**").addResourceLocations("webapp/images/");
+        registry.addResourceHandler("/css/**").addResourceLocations("classpath:./static/css/");
+//        registry.addResourceHandler("/view/**").addResourceLocations("webapp/js/");
     }
-
-    //ClassLoaderTemplateResolver
-//    @Bean
-//    public ClassLoaderTemplateResolver yourTemplateResolver() {
-//        ClassLoaderTemplateResolver configurer = new ClassLoaderTemplateResolver();
-//        configurer.setPrefix("./webapp/WEB-INF/templates/");
-//        configurer.setSuffix(".html");
-//        configurer.setTemplateMode(TemplateMode.HTML);
-//        configurer.setCharacterEncoding("UTF-8");
-//        configurer.setOrder(0);  // this is important. This way spring //boot will listen to both places 0 and 1
-//        configurer.setCheckExistence(true);
-//        return configurer;
-//    }
 
 
 }

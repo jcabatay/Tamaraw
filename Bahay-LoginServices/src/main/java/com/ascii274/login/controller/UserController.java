@@ -4,13 +4,14 @@ import com.ascii274.login.entity.User;
 import com.ascii274.login.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,9 +35,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/getall")
-    public ResponseEntity<?> getAllUsers(){
-        List<User> users = userServiceImp.getAllUsers();
-        return ResponseEntity.status(200).body(users);
+    public String getAllUsers(Model model){
+        model.addAttribute("allusers", userServiceImp.getAllUsers());
+        return "getall";
     }
 
     @GetMapping(path = "/search/id/{id}")
@@ -51,6 +52,11 @@ public class UserController {
         Optional<User> userIdFound = Optional.of(new User());
         userIdFound = userServiceImp.getUserByUserId(userId);
         return ResponseEntity.status(200).body(userIdFound);
+    }
+
+    @GetMapping(value = "/index")
+    public String index() {
+        return "index";
     }
 
     @GetMapping(value = "/test-view")
