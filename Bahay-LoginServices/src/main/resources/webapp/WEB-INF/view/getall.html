@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Bahay getall</title>
+  <link th:href="@{/css/getall.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+  <div class="divHeader">
+    <table class="tableHeader">
+      <tr>
+        <td>
+          <p>Listing Users</p>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  <br>
+  <div>
+    <table class="tableListUser">
+      <thead>
+          <tr>
+            <th> Id </th>
+            <th> Userid </th>
+            <th> Username </th>
+            <th> First name </th>
+            <th> Last name </th>
+            <th> mail </th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr th:if="${allusers.empty}">
+          <td colspan="5">There are no users to list</td>
+        </tr>
+        <tr th:each="users:${allusers}">
+          <td> <span th:text="${users.id}"></span> </td>
+          <td> <span th:text="${users.userId}"></span> </td>
+          <td> <span th:text="${users.userName}"></span> </td>
+          <td> <span th:text="${users.firstName}"></span> </td>
+          <td> <span th:text="${users.lastName}"></span> </td>
+          <td> <span th:text="${users.mail}"></span> </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</body>
+</html>
