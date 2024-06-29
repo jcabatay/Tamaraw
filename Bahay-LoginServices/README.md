@@ -1,11 +1,14 @@
+## Requirements
+
 - Java 17
 - Docker image: phpmyadmin:5.2.1 ( this is automatically downloaded on building module)
 - Docker image: mysql:8.0.33 ( this is automatically downloaded on building module)
 
 ## Starting services
 
-* on terminal: docker-compose run -d
-* on IDE run: DockerApp
+* On terminal: docker-compose up
+* Or on IDE run: docker-compose.yml run services.
+* Then, run the app.
 
 ## Stopping services
 * on terminal: docker-compose down
@@ -17,6 +20,9 @@
 ```
   localhost:8090
 ```
+http://localhost:8762/v1/index
+http://localhost:8762/v1/add
+http://localhost:8762/v1/getall
 
 ## Usage:
 ```

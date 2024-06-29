@@ -1,5 +1,7 @@
 # cat docker-compose.yml
-version: '3.3'
+# version installed 2.27.1
+#version: '3.9'
+version: '3.8'
 services:
   ### MySQL Container
   mysql:

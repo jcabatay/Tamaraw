@@ -4,6 +4,7 @@ LABEL authors="joel"
 #ENTRYPOINT ["top", "-b"]
 
 MAINTAINER ascii274@gmail.com
+#RUN addgroup mysql && adduser -S -H root -G mysql
 RUN chown -R mysql:root /var/lib/mysql/
 
 # CODE BELOW FOR FILE .ENV
@@ -25,3 +26,6 @@ ADD src/main/resources/user_data2.sql /etc/mysql/user_data.sql
 RUN sed -i 's/MYSQL_DATABASE/'$MYSQL_DATABASE'/g' /etc/mysql/user_data2.sql
 RUN cp /etc/mysql/user_data2.sql /docker-entrypoint-initdb.d
 EXPOSE 3306
+
+
+#

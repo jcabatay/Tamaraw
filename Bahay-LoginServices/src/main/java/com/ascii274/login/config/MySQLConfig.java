@@ -19,4 +19,6 @@ public class MySQLConfig {
     private String MYSQL_PORT;
     private String ENTITY_TO_SCAN;
     private String URL;
+
+
 }
