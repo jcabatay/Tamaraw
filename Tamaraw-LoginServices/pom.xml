@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.ascii274</groupId>
-	<artifactId>Bahay-LoginServices</artifactId>
+	<artifactId>Tamaraw-LoginServices</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Bahay-LoginServices</name>
 	<description>Demo project for Spring Boot</description>
