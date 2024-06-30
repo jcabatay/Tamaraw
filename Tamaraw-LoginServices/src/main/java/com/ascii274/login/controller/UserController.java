@@ -65,7 +65,7 @@ public class UserController {
 
     @GetMapping( value = "/test-message" )
     public String hello(){
-        return "Hello, Bahay Login Services";
+        return "Hello, Tamaraw Login Services";
     }
 
 }

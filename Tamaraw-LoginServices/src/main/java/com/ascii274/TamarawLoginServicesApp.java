@@ -12,10 +12,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EntityScan("com.ascii274.login.entity")
 @EnableJpaRepositories("com.ascii274.login.repository")
 @EnableWebMvc
-public class BahayLoginServicesApp {
+public class TamarawLoginServicesApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BahayLoginServicesApp.class, args);
+		SpringApplication.run(TamarawLoginServicesApp.class, args);
 	}
 
 }

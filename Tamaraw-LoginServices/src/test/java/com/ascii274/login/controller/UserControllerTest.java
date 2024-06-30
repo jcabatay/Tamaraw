@@ -1,7 +1,5 @@
 package com.ascii274.login.controller;
 
-import com.ascii274.BahayLoginServicesApp;
-import com.ascii274.login.controller.UserController;
 import com.ascii274.login.entity.User;
 import com.ascii274.login.repository.UserRepository;
 import org.junit.Before;

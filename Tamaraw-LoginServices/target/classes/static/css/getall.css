@@ -1,0 +1,50 @@
+
+.tableListUser{
+  width: 100%;
+  border-collapse: collapse;
+  /*border: 1px solid;*/
+  text-align: left;
+}
+
+body {
+  background-color: white;
+}
+
+th{
+    height: 50px;
+    padding: 4px;
+}
+
+td{
+    height: 25px;
+    vertical-align: bottom;
+    border-bottom: 1px solid #ddd;
+    padding: 4px;
+}
+
+tr:hover{
+    /*background-color: coral;*/
+     background-color: rgb(117, 175, 225);
+}
+
+/* header */
+.divHeader {
+    width: 100%;
+    background-color: rgb(117, 175, 225);
+    color: white;
+    border: 1px solid black;
+    /*margin: 20px;*/
+    /*padding: 20px;*/
+    text-align: center;
+    align-content: center;
+}
+
+.tableHeader{
+      width: 100%;
+      /*border-collapse: collapse;*/
+      /*border: 1px solid;*/
+      text-align: center;
+      opacity: 0.6;
+      color: white;
+      font-size: 40px;
+}

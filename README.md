@@ -1,5 +1,5 @@
 # ProjectName:
-> Bahay
+> Tamaraw
 
 ##  Necesaries versions:
 
@@ -9,7 +9,7 @@
 - Docker image: mysql:8.0.33 ( this is automatically downloaded on building module)
 
 ## Project modules.
-* [Bahay-LoginServices](Bahay-LoginServices/README.md)<br>
+* [Tamaraw-LoginServices](Tamaraw-LoginServices/README.md)<br>
 
 
 ## Contact info:

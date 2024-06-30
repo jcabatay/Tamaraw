@@ -14,9 +14,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+//@SpringBootTest
+@SpringBootTest(classes = {TamarawLoginServicesAppTest.class})
 @AutoConfigureMockMvc
-class BahayLoginServicesAppTest {
+
+class TamarawLoginServicesAppTest {
 
 	@Autowired
 	private UserController userController;
@@ -31,7 +33,7 @@ class BahayLoginServicesAppTest {
 				.andDo(print())
 				.andExpect(status()
 						.isOk())
-				.andExpect(content().string(containsString("Hello, Bahay Login Services")));
+				.andExpect(content().string(containsString("Hello, Tamaraw Login Services")));
 	}
 
 	@Test

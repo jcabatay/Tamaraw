@@ -6,12 +6,12 @@
 
 ## Starting services
 
-* On terminal: docker-compose up
+* On terminal from framework: docker-compose up
 * Or on IDE run: docker-compose.yml run services.
 * Then, run the app.
 
 ## Stopping services
-* on terminal: docker-compose down
+* on terminal from framework: docker-compose down
 * on IDE stop DockerApp
 
 
@@ -30,7 +30,7 @@ http://localhost:8762/v1/getall
 - localhost:8762/v1/search/id_to_search
 ```
 ## Project modules.
-* [Bahay/login-services](Bahay-login-services/README.md)<br>
+* [Tamaraw-LoginServices](README.md)<br>
 
 
 ## Running Test

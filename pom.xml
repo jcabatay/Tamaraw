@@ -9,16 +9,16 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ascii274</groupId>
-	<artifactId>Bahay</artifactId>
+	<artifactId>Tamaraw</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Bahay</name>
+	<name>Tamaraw</name>
 	<description>Home Services</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<modules>
-		<module>Bahay-LoginServices</module>
+		<module>Tamaraw-LoginServices</module>
 	</modules>
 
 <!--	<build>-->

@@ -1,6 +1,8 @@
 package com.ascii274.login.config;
 
 import jakarta.persistence.EntityManagerFactory;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +16,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
 
-
+@Getter
+@Setter
 @Configuration
 @EnableJpaRepositories("com.ascii274.login.config")
 public class JpaConfiguration {
@@ -23,7 +26,7 @@ public class JpaConfiguration {
     private MySQLConfig mySQLConfig;
 
 //    Dotenv dotenv = Dotenv.configure()
-//            .directory("./Bahay-LoginServices")
+//            .directory("./Tamaraw-LoginServices")
 //            .ignoreIfMalformed()
 //            .ignoreIfMissing()
 //            .load();
