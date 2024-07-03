@@ -20,9 +20,9 @@
 ```
   localhost:8090
 ```
-http://localhost:8762/v1/index
-http://localhost:8762/v1/add
-http://localhost:8762/v1/getall
+http://localhost:8762/user/index
+http://localhost:8762/user/signup
+http://localhost:8762/admin/getall
 
 ## Usage:
 ```
