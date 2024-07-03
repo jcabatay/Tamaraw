@@ -7,9 +7,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    public Optional<User> getUserById(Long userId);
-
-    public Optional<User> getUserByUserId(String userId);
+    public Optional<User> getUserByMailMobile(String mailMobile);
 
     public List<User> getAllUsers();
 

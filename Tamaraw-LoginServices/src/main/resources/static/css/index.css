@@ -13,8 +13,9 @@
       width: 100%;
       /*border-collapse: collapse;*/
       /*border: 1px solid;*/
+      background-color: rgb(117, 175, 225);
       text-align: center;
       opacity: 0.6;
       color: white;
-      font-size: 20px;
+      font-size: 40px;
 }

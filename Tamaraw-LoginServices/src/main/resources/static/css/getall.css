@@ -10,22 +10,35 @@ body {
   background-color: white;
 }
 
-th{
-    height: 50px;
-    padding: 4px;
+.trListUserHeader{
+    text-align: left;
+    background-color: rgb(11, 175, 225);
+    /*height: 50px;*/
+    padding: 2px;
+
 }
 
-td{
+
+/* use listing users, every row*/
+.trListUser{
+    text-align: left;
+}
+
+.trListUser:hover{
+    background-color: coral;
+    background-color: rgb(11, 175, 225);
+}
+
+
+
+/*td{
     height: 25px;
     vertical-align: bottom;
     border-bottom: 1px solid #ddd;
     padding: 4px;
-}
+}*/
 
-tr:hover{
-    /*background-color: coral;*/
-     background-color: rgb(117, 175, 225);
-}
+
 
 /* header */
 .divHeader {

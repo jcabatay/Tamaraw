@@ -14,6 +14,6 @@ import java.util.Optional;
 @NonNullApi
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    public Optional<User> findByUserId(String userId);
+    public Optional<User> getUserByMailMobile(String mailMobile);
 
 }

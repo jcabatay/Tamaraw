@@ -18,15 +18,11 @@ public class UserServiceImp implements UserService{
     private UserRepository userRepository;
 
     @Override
-    public Optional<User> getUserById(Long userId) {
-        return userRepository.findById(userId);
+    public Optional<User> getUserByMailMobile(String mailMobile) {
+        return userRepository.getUserByMailMobile(mailMobile);
     }
 
-    @Override
-    public Optional<User> getUserByUserId(String userId) {
-//        return Optional.empty();
-        return userRepository.findByUserId(userId);
-    }
+
 
     @Override
     public List<User> getAllUsers() {
