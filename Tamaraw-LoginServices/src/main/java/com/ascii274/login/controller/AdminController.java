@@ -40,7 +40,21 @@ public class AdminController {
         return "getall";
     }
 
+    /**
+     * Search by mobile or mail
+     * @param mailMobile
+     * @return as jsonformat
+     */
+    @GetMapping(path = "/search/mail-mobile/{mailMobile}")
+    public @ResponseBody ResponseEntity<Optional<User>> search(@PathVariable("mailMobile") String mailMobile){
+        Optional<User> userFound =  userServiceImp.getUserByMailMobile(mailMobile);
+        return ResponseEntity.status(200)
+                .body(userFound);
+    }
 
 
+    public @ResponseBody String helloAdmin(){
+        return "Hello, admin";
+    }
 
 }
