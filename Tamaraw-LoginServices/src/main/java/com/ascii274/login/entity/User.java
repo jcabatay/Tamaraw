@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.beans.ConstructorProperties;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,6 +19,10 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class User {
 
+    @ConstructorProperties({"name"})
+    public User(String name){
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

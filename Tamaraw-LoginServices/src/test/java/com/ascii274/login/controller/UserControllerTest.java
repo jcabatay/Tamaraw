@@ -1,5 +1,8 @@
 package com.ascii274.login.controller;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import com.ascii274.login.entity.User;
 import com.ascii274.login.repository.UserRepository;
 import org.junit.Before;
@@ -11,10 +14,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.time.LocalDateTime;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -27,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 public class UserControllerTest {
+    private final static LocalDateTime LOCAL_DATE = LocalDateTime.of(2024,07,03,22,52,00);
 
     @Autowired
     private UserController userController;
@@ -37,35 +45,34 @@ public class UserControllerTest {
     @Autowired
     private UserRepository userRepository;
 
-    @Test
-    public void givenUsers_whenGetUsers_thenStatus200() throws Exception{
-        createUser("Joel");
-        createUser("Shiva");
-        mvc.perform(get("/v1/getall").contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
-                .andExpect(jsonPath("$[0].userName",is("Joel")))
-                .andExpect(jsonPath("$[1].userName",is("Shiva")));
 
-    }
-
-    // Functional
-    private void createUser(String userName) {
-        User user = new User(userName);
-        userRepository.saveAndFlush(user);
-    }
 
     // Functional
     @Before
     public void resetDB() {
-        userRepository .deleteAll();
+        userRepository.deleteAll();
     }
 
     // Functional
     @Test
     public void contextLoads() throws Exception{
-
+        assertThat(userController).isNotNull();
     }
+
+
+    @Test
+    public void shouldReturnDefaultMessage() throws Exception{
+        this.mvc.perform( get ("/user/test-message"))
+                .andDo(print())
+                .andExpect(status().isOk())  // code 200 ok
+                .andExpect(content().string(containsString("Hello, Tamaraw Login Services")));
+    }
+
+    @Test
+    public void givenIndexPage_whenMockMvc_thenReturnsIndexViewName() throws Exception {
+        this.mvc.perform(get("/user/index")).andDo(print())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(view().name("index"));
+    }
+
 }

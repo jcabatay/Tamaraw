@@ -92,7 +92,7 @@ public class UserController {
      * @return
      */
     @GetMapping( value = "/test-message" )
-    public String hello(){
+    public @ResponseBody  String hello(){
         return "Hello, Tamaraw Login Services";
     }
 
