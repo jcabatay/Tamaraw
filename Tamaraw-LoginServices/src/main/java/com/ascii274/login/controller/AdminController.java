@@ -2,7 +2,6 @@ package com.ascii274.login.controller;
 
 import com.ascii274.login.entity.User;
 import com.ascii274.login.repository.UserRepository;
-import com.ascii274.login.service.UserService;
 import com.ascii274.login.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +51,7 @@ public class AdminController {
                 .body(userFound);
     }
 
-
+    @GetMapping(value = "/test-message")
     public @ResponseBody String helloAdmin(){
         return "Hello, admin";
     }
