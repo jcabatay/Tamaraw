@@ -2,6 +2,7 @@ package com.ascii274.login.service;
 
 
 import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.dto.UserResponseDto;
 import com.ascii274.login.entitydto.entity.User;
 import com.ascii274.login.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -25,7 +26,7 @@ public class UserServiceImp implements UserService{
     private UserRepository userRepository;
 
     @Override
-    public Optional<User> getUserByMailMobile(String mailMobile) {
+    public List<UserResponseDto> getUserByMailMobile(String mailMobile) {
         return userRepository.getUserByMailMobile(mailMobile);
     }
 
