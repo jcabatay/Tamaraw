@@ -1,5 +1,7 @@
 package com.ascii274.login.controller;
-import com.ascii274.login.entity.User;
+
+import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.entity.User;
 import com.ascii274.login.repository.UserRepository;
 import com.ascii274.login.service.UserServiceImp;
 import jakarta.validation.Valid;
@@ -11,7 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
+import java.text.ParseException;
+
 
 @Controller
 @RequestMapping(value = "/user")
@@ -27,7 +30,7 @@ public class UserController {
     }
 
     /**
-     * Open a form to signup, then redirecto to adduser to insert data
+     * Show a form to fillup, then is redirect to /adduser to insert data user
      * @param user
      * @return
      */
@@ -37,39 +40,25 @@ public class UserController {
     }
 
     /**
-     * Create a new user, save it, and redirected to getall.html
-     * @param user
+     * Create a new user, from a form signup.
+     * @param userCreationDto
+     * @param result
      * @return
      */
     @PostMapping(value = "/adduser", consumes = "application/x-www-form-urlencoded")
-//    public String addUser(@Valid  User user, Binding result, Model model){
-    public String addUser(@Valid  User user, BindingResult result){
+    public String addUser(@Valid  UserCreationDto userCreationDto, BindingResult result){
         if(result.hasErrors()){
             return "signup";
         }
-        user.setDateSignUp(LocalDateTime.now());
-        userServiceImp.save(user);
-        log.info("User created" + user);
+        userServiceImp.save(userCreationDto);
+        log.info("UserCreationDto created" + userCreationDto);
         return "redirect:../admin/getall";
     }
 
-
     /**
-     * Create a user @param newUser and @return it as ResponseEntity
+     * Show index.html
+     * @return
      */
-    @PostMapping(value="/create")
-//    @PostMapping(value="/create", consumes = {"multipart/form-data"})
-    public ResponseEntity<User> addUserJson(@RequestBody User newUser){
-        try{
-            newUser.setDateSignUp(LocalDateTime.now());
-            userServiceImp.save(newUser);
-            return new ResponseEntity<>(newUser,null, HttpStatus.CREATED);
-        }catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
     @GetMapping(value = "/index")
     public String index() {
         return "index";
@@ -87,6 +76,37 @@ public class UserController {
         return "hello-view";
     }
 
+
+    /* > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+     *      JSON RETURN DATA
+     * > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >  */
+
+
+
+
+    @PostMapping(value="/add")
+    public ResponseEntity<UserCreationDto> addUser(@RequestBody UserCreationDto userCreationDto) throws ParseException {
+        User user=userServiceImp.save(userCreationDto);
+        log.info("User created " + userCreationDto);
+        return ResponseEntity.status(200).body(userCreationDto);
+    }
+
+    /**
+     * Create an User with
+     * @param userCreationDto
+     * @return
+     */
+    @PostMapping(value="/create")
+    public ResponseEntity<User> createUser(@RequestBody UserCreationDto userCreationDto){
+        try{
+            User user=userServiceImp.save(userCreationDto);
+            log.info("UserCreationDto created" + userCreationDto);
+            return new ResponseEntity<>(user,null, HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /**
      * Initial test message.
      * @return
@@ -95,5 +115,8 @@ public class UserController {
     public @ResponseBody  String hello(){
         return "Hello, Tamaraw Login Services";
     }
+
+
+
 
 }

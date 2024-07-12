@@ -1,4 +1,4 @@
-package com.ascii274.login.entity;
+package com.ascii274.login.entitydto.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.beans.ConstructorProperties;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -19,10 +20,7 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class User {
 
-    @ConstructorProperties({"name"})
-    public User(String name){
-        this.name = name;
-    }
+//    @ConstructorProperties({"name"})
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -48,19 +46,12 @@ public class User {
     private String password;
 
     @Column(name="date_signup")
-    private LocalDateTime dateSignUp;
+    private String dateSignUp=setFormatStringDate();
 
 
-
-//    @Column(name="first_name")
-//    private String firstName;
-//
-//    @Column(name="last_name")
-//    private String lastName;
-
-
-
-
-
-
+    private String setFormatStringDate(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
+        return now.format(formatter);
+    }
 }

@@ -1,6 +1,7 @@
 package com.ascii274.login.service;
 
-import com.ascii274.login.entity.User;
+import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.entity.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,5 +12,7 @@ public interface UserService {
 
     public List<User> getAllUsers();
 
-    public Optional<User> save(User user);
+    public User save(UserCreationDto userCreationDto);
+
+//    public Optional<UserCreationDto> saveUserCreationDto(User user);
 }

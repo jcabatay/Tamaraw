@@ -1,7 +1,8 @@
 package com.ascii274.login.repository;
 
 
-import com.ascii274.login.entity.User;
+import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.entity.User;
 import io.micrometer.common.lang.NonNullApi;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +16,6 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User,Long> {
 
     public Optional<User> getUserByMailMobile(String mailMobile);
+    public Optional<User> save(UserCreationDto userCreationDto);
 
 }

@@ -10,7 +10,7 @@ environments:
       MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: rootmysql
       MYSQL_PORT: 3306
-      ENTITY_TO_SCAN: com.ascii274.login.entity
+      ENTITY_TO_SCAN: com.ascii274.login.entitydto
       URL: jdbc:mysql://localhost
 
 # Configuration webapp directory
