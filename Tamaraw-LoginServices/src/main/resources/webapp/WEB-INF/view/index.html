@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="ISO-8859-1">
     <title>Tamaraw Index</title>
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css"/>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="divHeader">
-      <table class="tableHeader">
-        <tr>
-          <td>
-            <p>Index</p>
-          </td>
-        </tr>
-      </table>
+  <br>
+    <div class="container-fluid">
+      <div class="alert alert-primary">
+        <h1 class="text-primary-emphasis text-center">Home</h1>
+      </div>
     </div>
-     <br>
-    <div>
-      <table>
-        <tr>
-          <td><a th:href="@{/user/index}">[ Index ]</a></td>
-          <td><a th:href="@{/user/signup}">[ Sign up ]</a></td>
-          <td><a th:href="@{/admin/getall}">[ Get All Users ]</a></td>
-        </tr>
-      </table>
-    </div>
+  <div th:replace="header :: copy">
+  </div>
   </body>
 </html>
