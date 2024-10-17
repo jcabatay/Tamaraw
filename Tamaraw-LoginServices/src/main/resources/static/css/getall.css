@@ -12,7 +12,8 @@ body {
 
 .trListUserHeader{
     text-align: left;
-    background-color: rgb(11, 175, 225);
+    /*background-color: rgb(11, 175, 225);*/
+    background-color: #cfe2ff;
     /*height: 50px;*/
     padding: 2px;
 
@@ -26,7 +27,9 @@ body {
 
 .trListUser:hover{
     background-color: coral;
-    background-color: rgb(11, 175, 225);
+    /*background-color: rgb(11, 175, 225);*/
+/*    background-color: rgb(81, 88, 100);*/
+    background-color: #cfe2ff;
 }
 
 
@@ -43,7 +46,8 @@ body {
 /* header */
 .divHeader {
     width: 100%;
-    background-color: rgb(117, 175, 225);
+    /*background-color: rgb(117, 175, 225);*/
+    background-color: rgb(81, 88, 100);
     color: white;
     border: 1px solid black;
     /*margin: 20px;*/

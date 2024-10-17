@@ -2,6 +2,7 @@ package com.ascii274.login.controller;
 
 import com.ascii274.login.entitydto.dto.UserResponseDto;
 import com.ascii274.login.entitydto.entity.User;
+import com.ascii274.login.exception.UserException;
 import com.ascii274.login.repository.UserRepository;
 import com.ascii274.login.service.UserServiceImp;
 import org.slf4j.Logger;
@@ -12,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "admin/")
@@ -32,8 +32,9 @@ public class AdminController {
      * @param model
      * @return
      */
+    @ExceptionHandler(value = UserException.class)
     @GetMapping(value = "/getall")
-    public String getAllUsers(Model model){
+    public String getAllUsers(Model model) throws Exception{
         model.addAttribute("allusers", userServiceImp.getAllUsers());
         return "getall";
     }

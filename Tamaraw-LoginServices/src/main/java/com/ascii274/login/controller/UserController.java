@@ -2,7 +2,7 @@ package com.ascii274.login.controller;
 
 import com.ascii274.login.entitydto.dto.UserCreationDto;
 import com.ascii274.login.entitydto.entity.User;
-import com.ascii274.login.repository.UserRepository;
+import com.ascii274.login.exception.UserException;
 import com.ascii274.login.service.UserServiceImp;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -22,12 +22,25 @@ public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger((UserController.class));
     private final UserServiceImp userServiceImp;
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
 
-    public UserController(UserServiceImp userServiceImp, UserRepository userRepository) {
+    public UserController(UserServiceImp userServiceImp) {
         this.userServiceImp = userServiceImp;
-        this.userRepository = userRepository;
+//        this.userRepository = userRepository;
     }
+
+    @GetMapping(value="/error")
+    public UserException error() throws Exception{
+        log.info("throw userException");
+        return new UserException("Dentro user exception");
+//        return "error";
+    }
+
+//    @ExceptionHandler(UserException.class)
+//    public String error2(){
+//        log.error("Errror in Exception handler");
+//        return "error";
+//    }
 
     /**
      * Show a form to fillup, then is redirect to /adduser to insert data user
