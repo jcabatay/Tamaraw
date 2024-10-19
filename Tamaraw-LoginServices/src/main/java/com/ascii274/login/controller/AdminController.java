@@ -1,10 +1,12 @@
 package com.ascii274.login.controller;
 
+
 import com.ascii274.login.entitydto.dto.UserResponseDto;
+import com.ascii274.login.entitydto.dto.UserSearchDto;
 import com.ascii274.login.entitydto.entity.User;
-import com.ascii274.login.exception.UserException;
 import com.ascii274.login.repository.UserRepository;
 import com.ascii274.login.service.UserServiceImp;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -15,26 +17,49 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "admin/")
+@RequestMapping(value = "/admin")
 public class AdminController {
 
     private static final Logger log = LoggerFactory.getLogger((UserController.class));
     private final UserServiceImp userServiceImp;
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
 
-    public AdminController(UserServiceImp userServiceImp, UserRepository userRepository) {
+    public AdminController(UserServiceImp userServiceImp) {
         this.userServiceImp = userServiceImp;
-        this.userRepository = userRepository;
+//        this.userRepository = userRepository;
     }
 
     /**
-     * Listing all data, showing it in getall.HTML
+     * Call form-search to find mail_mobile ...
+     * @param userSearchDto
+     * @return
+     */
+    @GetMapping(value="/search")
+    public String search(UserSearchDto userSearchDto){
+        return "search";
+    }
+
+    /**
+     * List all data userSearchDto found, showing it in found.html
+     * @param userSearchDto
      * @param model
      * @return
      */
-    @ExceptionHandler(value = UserException.class)
+    @PostMapping(value = "/found")
+    public String find(@Valid UserSearchDto userSearchDto, Model model){
+        model.addAttribute("usersMailMobileFounds", userServiceImp.getUserByMailMobile(userSearchDto.getMailMobile()));
+        log.info("searching " + userSearchDto.toString());
+        return "found";
+    }
+
+    /**
+     * Listing all data, showing it in getall.html
+     * @param model
+     * @return
+     */
+//    @ExceptionHandler(value = UserException.class)
     @GetMapping(value = "/getall")
-    public String getAllUsers(Model model) throws Exception{
+    public String getAllUsers(Model model, UserSearchDto userSearchDto) throws Exception{
         model.addAttribute("allusers", userServiceImp.getAllUsers());
         return "getall";
     }
@@ -58,7 +83,7 @@ public class AdminController {
      * @param mailMobile
      * @return list
      */
-    @GetMapping(path = "/search/{mailMobile}")
+    @GetMapping(path = "/search2/{mailMobile}")
     public @ResponseBody ResponseEntity<List<UserResponseDto>> search(@PathVariable("mailMobile") String mailMobile){
         List<UserResponseDto> userFound =  userServiceImp.getUserByMailMobile(mailMobile);
         return ResponseEntity.status(200)

@@ -1,6 +1,7 @@
 package com.ascii274.login.controller;
 
 import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.dto.UserSearchDto;
 import com.ascii274.login.entitydto.entity.User;
 import com.ascii274.login.exception.UserException;
 import com.ascii274.login.service.UserServiceImp;
@@ -44,11 +45,12 @@ public class UserController {
 
     /**
      * Show a form to fillup, then is redirect to /adduser to insert data user
-     * @param user
+     * @param userCreationDto
      * @return
      */
     @GetMapping(value="/signup")
-    public String signup(User user){
+    public String signup(UserCreationDto userCreationDto, UserSearchDto userSearchDto){
+        // userSearchDto se usa para  //99999
         return "signup";
     }
 
@@ -64,7 +66,7 @@ public class UserController {
             return "signup";
         }
         userServiceImp.save(userCreationDto);
-        log.info("UserCreationDto created" + userCreationDto);
+        log.info("UserCreationDto created" + userCreationDto); // 99999
         return "redirect:../admin/getall";
     }
 
@@ -73,7 +75,7 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "/index")
-    public String index() {
+    public String index(UserSearchDto userSearchDto) {
         return "index";
     }
 
