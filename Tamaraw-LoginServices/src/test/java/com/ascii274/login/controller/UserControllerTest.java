@@ -2,7 +2,10 @@ package com.ascii274.login.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.entity.User;
 import com.ascii274.login.repository.UserRepository;
+import com.ascii274.login.service.UserServiceImp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,15 +43,14 @@ public class UserControllerTest {
     private MockMvc mvc;
 
     @Autowired
-    private UserRepository userRepository;
-
+    private UserServiceImp userServiceImp;
 
 
     // Functional
-    @Before
-    public void resetDB() {
-        userRepository.deleteAll();
-    }
+//    @Before
+//    public void resetDB() {
+//        userRepository.deleteAll();
+//    }
 
     // Functional
     @Test
@@ -70,6 +72,14 @@ public class UserControllerTest {
         this.mvc.perform(get("/user/index")).andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("index"));
+    }
+
+    @Test
+    public void addUser_shouldGetSavedUser(){
+        UserCreationDto userCreationDto = new UserCreationDto(
+                "Shiva","Bullterrier","shiava@mail.com","mypassword");
+        User savedUser = userServiceImp.save(userCreationDto);
+        assertThat(savedUser.getName().equals( userCreationDto.getName()));
     }
 
 }
