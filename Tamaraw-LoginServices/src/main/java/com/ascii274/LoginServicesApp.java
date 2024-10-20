@@ -14,10 +14,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EntityScan("com.ascii274.login.entitydto")
 @EnableJpaRepositories("com.ascii274.login.repository")
 @EnableWebMvc
-public class TamarawLoginServicesApp {
+public class LoginServicesApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TamarawLoginServicesApp.class, args);
+		SpringApplication.run(LoginServicesApp.class, args);
 	}
 
 	@Bean
