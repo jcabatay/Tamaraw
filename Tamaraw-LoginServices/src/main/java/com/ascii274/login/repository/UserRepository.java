@@ -15,9 +15,12 @@ import java.util.Optional;
 @Repository
 @Transactional
 @NonNullApi
+
+
 public interface UserRepository extends JpaRepository<User,Long> {
 
     public List<UserResponseDto> getUserByMailMobile(String mailMobile);
-    public Optional<User> save(UserCreationDto userCreationDto);
+    public Optional<UserCreationDto> save(UserCreationDto userCreationDto);
+
 
 }
