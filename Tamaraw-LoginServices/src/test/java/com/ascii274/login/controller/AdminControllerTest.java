@@ -1,6 +1,9 @@
 package com.ascii274.login.controller;
 
 
+import com.ascii274.login.entitydto.dto.UserCreationDto;
+import com.ascii274.login.entitydto.entity.User;
+import com.ascii274.login.service.UserServiceImp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +40,19 @@ public class AdminControllerTest {
     @Autowired
     private AdminController adminController;
 
+    @Autowired
+    private  UserServiceImp userServiceImp;
+
+    public AdminControllerTest() {
+    }
+
 //    @Test
 //    public void getAllUsers() throws Exception{
+//        UserCreationDto userCreationDto = new UserCreationDto(
+//                "Shiva","Bullterrier","shiava@mail.com","mypassword");
+//        User savedUser = userServiceImp.save(userCreationDto);
 //        mvc.perform(MockMvcRequestBuilders
-//                .get("/admin/getall")
+//                .get("/admin/getallusers")
 //                .accept(MediaType.APPLICATION_JSON))
 //                .andDo(print())
 //                .andExpect(status().isOk())
@@ -48,10 +60,10 @@ public class AdminControllerTest {
 //                .andExpect(MockMvcResultMatchers.jsonPath("$.allusers[*]").isNotEmpty());
 //    }
 
+
     @Test
     public void contextLoads() throws Exception{
         assertThat(adminController).isNotNull();
     }
-
 
 }
